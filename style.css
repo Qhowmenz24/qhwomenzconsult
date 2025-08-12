@@ -45,3 +45,5 @@ a{color:var(--primary);text-decoration:none}
 
 .site-footer{border-top:1px solid #1e222b;background:#0d0f14}
 .site-footer .container{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap}
+
+.btn--sms{background:#00c851;color:#fff}

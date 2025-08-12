@@ -76,3 +76,10 @@ function openChecker(kind, selectId){
   const msg = `Hello Qhowmenz Consult,%0AI want ${kind} result checker.%0AQuantity: ${qty}%0APrice: GHS ${price}`;
   window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
+
+
+function openSMS(){
+  const phone = "0592848359";
+  const message = encodeURIComponent("Hello Qhowmenz Consult, I would like to place an order.");
+  window.location.href = `sms:$0592848359?body=${message}`;
+}
