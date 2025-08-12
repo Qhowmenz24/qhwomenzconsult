@@ -58,7 +58,7 @@ function openWhatsApp(label, net){
     return;
   }
   const msg = `Hello Qwomenz Consult,%0AI want to buy ${label} data.%0APlan: ${plan}%0ARecipient: ${num}%0APrice: GHS ${price}`;
-  window.open(`https://wa.me/233555610075?text=${msg}`,"_blank","noopener");
+  window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
 
 function openService(service, selectId){
@@ -66,7 +66,7 @@ function openService(service, selectId){
   const plan = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
   const msg = `Hello Qwomenz Consult,%0AI want to buy ${service}.%0APlan: ${plan}%0APrice: GHS ${price}`;
-  window.open(`https://wa.me/233555610075?text=${msg}`,"_blank","noopener");
+  window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
 
 function openChecker(kind, selectId){
@@ -74,5 +74,5 @@ function openChecker(kind, selectId){
   const qty = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
   const msg = `Hello Qwomenz Consult,%0AI want ${kind} result checker.%0AQuantity: ${qty}%0APrice: GHS ${price}`;
-  window.open(`https://wa.me/233555610075?text=${msg}`,"_blank","noopener");
+  window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
