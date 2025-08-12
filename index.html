@@ -1,230 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>i‑Ben Digital Consult</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qwomenz Consult | Data, Services & Result Checkers</title>
+  <meta name="description" content="Buy MTN, AirtelTigo, and Telecel data. Netflix shared accounts, Audiomack Premium, MTN AFA registration, BECE & WASSCE result checkers.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">i‑Ben Digital Consult</div>
-    <nav class="nav-sm">
-      <a href="#buy-data">Buy Data</a>
-      <a href="#more-services">More Services</a>
-      <a href="#result-checkers">Result Checkers</a>
-    </nav>
-  </header>
+<header class="container site-header">
+  <div class="brand">Qwomenz Consult</div>
+  <nav>
+    <a href="#buy-data">Buy Data</a>
+    <a href="#services">More Services</a>
+    <a href="#result-checkers">Result Checkers</a>
+  </nav>
+  <a class="btn btn--wa" href="https://wa.me/233555610075" target="_blank" rel="noopener">WhatsApp Us</a>
+</header>
 
-  <main>
-    <!-- BUY DATA -->
-    <section id="buy-data" class="wrap">
-      <h2>Buy Data</h2>
+<section class="hero">
+  <div class="container">
+    <h1>Your Trusted e‑Voucher & Data Hub</h1>
+    <p>Instant delivery after payment confirmation. Orders go via WhatsApp.</p>
+  </div>
+</section>
 
-      <div class="grid cards">
-        <!-- MTN -->
-        <article class="card">
-          <header class="card-hd">
-            <h3>MTN Data</h3>
-            <span class="badge badge-mtn">MTN</span>
-          </header>
+<main class="container">
+  <section id="buy-data" class="card-grid">
+    <h2>Buy Data</h2>
 
-          <label>Choose Plan
-            <select id="mtnPlan"></select>
-          </label>
+    <div class="card">
+      <h3>MTN Data</h3>
+      <label>Plan
+        <select id="mtn-plan" data-network="mtn"></select>
+      </label>
+      <label>Recipient Number
+        <input id="mtn-number" type="tel" placeholder="e.g., 0551234567" inputmode="numeric" maxlength="10">
+      </label>
+      <div class="price-row">GHS <span id="mtn-price">—</span></div>
+      <button class="btn btn--mtn" onclick="openWhatsApp('MTN','mtn')">Buy Now</button>
+    </div>
 
-          <label>Recipient Number
-            <input id="mtnNumber" type="tel" placeholder="e.g. 0555610075" />
-          </label>
+    <div class="card">
+      <h3>AirtelTigo Data</h3>
+      <label>Plan
+        <select id="at-plan" data-network="at"></select>
+      </label>
+      <label>Recipient Number
+        <input id="at-number" type="tel" placeholder="e.g., 0261234567" inputmode="numeric" maxlength="10">
+      </label>
+      <div class="price-row">GHS <span id="at-price">—</span></div>
+      <button class="btn btn--tigo" onclick="openWhatsApp('AirtelTigo','at')">Buy Now</button>
+    </div>
 
-          <div class="row-between">
-            <div class="price">GHS <span id="mtnPrice">—</span></div>
-            <button id="mtnBuy" class="btn btn-mtn">Buy Now</button>
-          </div>
-        </article>
+    <div class="card">
+      <h3>Telecel Data</h3>
+      <label>Plan
+        <select id="telecel-plan" data-network="telecel"></select>
+      </label>
+      <label>Recipient Number
+        <input id="telecel-number" type="tel" placeholder="e.g., 0201234567" inputmode="numeric" maxlength="10">
+      </label>
+      <div class="price-row">GHS <span id="telecel-price">—</span></div>
+      <button class="btn btn--telecel" onclick="openWhatsApp('Telecel','telecel')">Buy Now</button>
+    </div>
+  </section>
 
-        <!-- AirtelTigo -->
-        <article class="card">
-          <header class="card-hd">
-            <h3>AirtelTigo Data</h3>
-            <span class="badge badge-at">AT</span>
-          </header>
+  <section id="services" class="card-grid">
+    <h2>More Services</h2>
 
-          <label>Choose Plan
-            <select id="atPlan"></select>
-          </label>
+    <div class="card">
+      <h3>Netflix Shared Account</h3>
+      <label>Plan
+        <select id="netflix-plan">
+          <option value="1 month access" data-price="45">1 month access — GHS 45</option>
+          <option value="3 months access" data-price="130">3 months access — GHS 130</option>
+          <option value="6 months access" data-price="260">6 months access — GHS 260</option>
+        </select>
+      </label>
+      <div class="price-row">GHS <span id="netflix-price">45</span></div>
+      <button class="btn btn--netflix" onclick="openService('Netflix', 'netflix-plan')">Buy Now</button>
+    </div>
 
-          <label>Recipient Number
-            <input id="atNumber" type="tel" placeholder="e.g. 0260000000" />
-          </label>
+    <div class="card">
+      <h3>Audiomack Premium (Android)</h3>
+      <label>Plan
+        <select id="audio-plan">
+          <option value="1 month unlocked" data-price="20">1 month unlocked — GHS 20</option>
+          <option value="3 months unlocked" data-price="55">3 months unlocked — GHS 55</option>
+          <option value="6 months unlocked" data-price="100">6 months unlocked — GHS 100</option>
+        </select>
+      </label>
+      <div class="price-row">GHS <span id="audio-price">20</span></div>
+      <button class="btn btn--audiomack" onclick="openService('Audiomack', 'audio-plan')">Buy Now</button>
+    </div>
 
-          <div class="row-between">
-            <div class="price">GHS <span id="atPrice">—</span></div>
-            <button id="atBuy" class="btn btn-at">Buy Now</button>
-          </div>
-        </article>
+    <div class="card">
+      <h3>MTN AFA Registration</h3>
+      <p>Requirements: Full name and number to be registered.</p>
+      <a class="btn btn--mtn" href="https://wa.me/233555610075?text=Hello%20Qwomenz%20Consult%2C%20I%20want%20to%20register%20for%20MTN%20AFA.%20Details%3A%20Full%20Name%2C%20Number%20to%20be%20registered" target="_blank" rel="noopener">Start on WhatsApp</a>
+    </div>
+  </section>
 
-        <!-- Telecel -->
-        <article class="card">
-          <header class="card-hd">
-            <h3>Telecel Data</h3>
-            <span class="badge badge-telecel">Telecel</span>
-          </header>
+  <section id="result-checkers" class="card-grid">
+    <h2>Result Checker Cards</h2>
 
-          <label>Choose Plan
-            <select id="telecelPlan"></select>
-          </label>
+    <div class="card">
+      <h3>BECE Result Checker (WAEC)</h3>
+      <p>Instant PIN + Serial delivered to WhatsApp after payment.</p>
+      <label>Quantity
+        <select id="bece-qty">
+          <option value="1" data-price="28">1 card — GHS 28</option>
+          <option value="2" data-price="55">2 cards — GHS 55</option>
+          <option value="5" data-price="130">5 cards — GHS 130</option>
+          <option value="10" data-price="250">10 cards — GHS 250</option>
+        </select>
+      </label>
+      <div class="price-row">GHS <span id="bece-price">28</span></div>
+      <button class="btn btn--wa" onclick="openChecker('BECE','bece-qty')">Buy Now</button>
+    </div>
 
-          <label>Recipient Number
-            <input id="telecelNumber" type="tel" placeholder="e.g. 0200000000" />
-          </label>
+    <div class="card">
+      <h3>WASSCE Result Checker (WAEC)</h3>
+      <p>Instant PIN + Serial delivered to WhatsApp after payment.</p>
+      <label>Quantity
+        <select id="wassce-qty">
+          <option value="1" data-price="35">1 card — GHS 35</option>
+          <option value="2" data-price="68">2 cards — GHS 68</option>
+          <option value="5" data-price="155">5 cards — GHS 155</option>
+          <option value="10" data-price="300">10 cards — GHS 300</option>
+        </select>
+      </label>
+      <div class="price-row">GHS <span id="wassce-price">35</span></div>
+      <button class="btn btn--wa" onclick="openChecker('WASSCE','wassce-qty')">Buy Now</button>
+    </div>
+  </section>
+</main>
 
-          <div class="row-between">
-            <div class="price">GHS <span id="telecelPrice">—</span></div>
-            <button id="telecelBuy" class="btn btn-telecel">Buy Now</button>
-          </div>
-        </article>
-      </div>
-      <p class="note">Instant delivery after payment confirmation. Orders go via WhatsApp.</p>
-    </section>
+<footer class="site-footer">
+  <div class="container">
+    <p>WhatsApp: <a href="https://wa.me/233555610075" target="_blank" rel="noopener">0555610075</a></p>
+    <p>Manual MoMo for now • Qwomenz Consult • © 2025</p>
+  </div>
+</footer>
 
-    <!-- MORE SERVICES -->
-    <section id="more-services" class="wrap">
-      <h2>More Services</h2>
-      <div class="grid cards">
-        <!-- Netflix -->
-        <article class="card">
-          <header class="card-hd">
-            <h3>Netflix Shared Account</h3>
-            <span class="badge badge-netflix">NETFLIX</span>
-          </header>
-
-          <label>Plan
-            <select id="netflixPlan">
-              <option value="45">1 month access</option>
-              <option value="130">3 months access</option>
-              <option value="260">6 months access</option>
-            </select>
-          </label>
-
-          <div class="row-between">
-            <div class="price">GHS <span id="netflixPrice">45.00</span></div>
-            <button id="netflixBuy" class="btn btn-netflix">Buy Now</button>
-          </div>
-        </article>
-
-        <!-- Audiomack -->
-        <article class="card">
-          <header class="card-hd">
-            <h3>Audiomack Premium (Android)</h3>
-            <span class="badge badge-audio">AUDIO</span>
-          </header>
-
-          <label>Plan
-            <select id="audioPlan">
-              <option value="20">1 month unlocked</option>
-              <option value="55">3 months unlocked</option>
-              <option value="100">6 months unlocked</option>
-            </select>
-          </label>
-
-          <div class="row-between">
-            <div class="price">GHS <span id="audioPrice">20.00</span></div>
-            <button id="audioBuy" class="btn btn-audiomack">Buy Now</button>
-          </div>
-        </article>
-
-        <!-- MTN AFA -->
-        <article class="card">
-          <header class="card-hd">
-            <h3>MTN AFA Registration</h3>
-            <span class="badge">AFA</span>
-          </header>
-
-          <p class="muted">Requirements: Full name and number to be registered.</p>
-          <button id="afaBuy" class="btn">Start on WhatsApp</button>
-        </article>
-      </div>
-    </section>
-
-    <!-- RESULT CHECKERS -->
-    <section class="services extra-services wrap" id="result-checkers">
-      <h2>Result Checker Cards</h2>
-      <div class="cards grid">
-        <!-- BECE -->
-        <article class="card rc">
-          <div class="card-top">
-            <div class="rc-badge rc-bece">BECE</div>
-            <h3>BECE Result Checker (WAEC)</h3>
-            <p>Instant PIN + Serial delivered to WhatsApp after payment.</p>
-          </div>
-
-          <div class="rc-fields">
-            <label>Quantity
-              <select id="beceQty">
-                <option value="1">1 card</option>
-                <option value="2">2 cards</option>
-                <option value="5">5 cards</option>
-                <option value="10">10 cards</option>
-              </select>
-            </label>
-
-            <label>Index Number (optional)
-              <input id="beceIndex" type="text" placeholder="e.g. 0423123456">
-            </label>
-
-            <label>Exam Year (optional)
-              <input id="beceYear" type="text" placeholder="e.g. 2025">
-            </label>
-          </div>
-
-          <div class="rc-bottom">
-            <span class="rc-price">GHS <span id="becePrice">—</span></span>
-            <button class="btn btn-at" id="beceBuy">Buy Now</button>
-          </div>
-        </article>
-
-        <!-- WASSCE -->
-        <article class="card rc">
-          <div class="card-top">
-            <div class="rc-badge rc-wassce">WASSCE</div>
-            <h3>WASSCE Result Checker (WAEC)</h3>
-            <p>Instant PIN + Serial delivered to WhatsApp after payment.</p>
-          </div>
-
-          <div class="rc-fields">
-            <label>Quantity
-              <select id="wassceQty">
-                <option value="1">1 card</option>
-                <option value="2">2 cards</option>
-                <option value="5">5 cards</option>
-                <option value="10">10 cards</option>
-              </select>
-            </label>
-
-            <label>Index Number (optional)
-              <input id="wassceIndex" type="text" placeholder="e.g. 1000123456">
-            </label>
-
-            <label>Exam Year (optional)
-              <input id="wassceYear" type="text" placeholder="e.g. 2025">
-            </label>
-          </div>
-
-          <div class="rc-bottom">
-            <span class="rc-price">GHS <span id="wasscePrice">—</span></span>
-            <button class="btn btn-netflix" id="wassceBuy">Buy Now</button>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>WhatsApp: <a href="https://wa.me/233555610075" target="_blank">0555610075</a></div>
-    <div class="muted">Manual MoMo for now • i‑Ben Digital Consult</div>
-  </footer>
-
-  <script src="app.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
