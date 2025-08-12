@@ -98,3 +98,59 @@ function openSMSChecker(kind, selectId){
   const body = `Hello Qhowmenz Consult, I want ${kind} result checker.\nQuantity: ${qty}\nPrice: GHS ${price}`;
   window.location.href = smsLink(body);
 }
+
+// ---- Paystack integration ----
+function promptBuyerInfo() {
+  const email = prompt("Enter your email for receipt (required):");
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("Valid email required."); return null; }
+  const name = prompt("Enter your full name (optional):") || "";
+  const phone = prompt("Enter your phone number (optional):") || "";
+  return { email, name, phone };
+}
+function paystackCheckout(amountGHS, description, metadata) {
+  const info = promptBuyerInfo();
+  if(!info) return;
+  const handler = PaystackPop.setup({
+    key: "pk_test_e7b1e05de054d8690e53d67f2257928415dc9521",
+    email: info.email,
+    amount: Math.round(Number(amountGHS) * 100),
+    currency: "GHS",
+    ref: "QH-" + Date.now(),
+    metadata: { custom_fields: [
+      { display_name: "Name", variable_name: "name", value: info.name },
+      { display_name: "Phone", variable_name: "phone", value: info.phone },
+      { display_name: "Details", variable_name: "details", value: description },
+      { display_name: "Meta", variable_name: "meta", value: JSON.stringify(metadata||{}) }
+    ]},
+    callback: function(response) {
+      alert("Payment successful! Ref: " + response.reference);
+      const msg = encodeURIComponent("Payment successful. Ref: " + response.reference + "\n" + description);
+      window.open(`https://wa.me/${WA}?text=${msg}`,"_blank","noopener");
+    },
+    onClose: function(){ alert("Payment window closed."); }
+  });
+  handler.openIframe();
+}
+function payDataWithPaystack(label, net) {
+  const sel = document.querySelector(`select[data-network="${net}"]`);
+  const num = document.getElementById(`${net}-number`).value.trim();
+  const plan = sel.value;
+  const price = sel.selectedOptions[0].dataset.price;
+  if(!/^\d{10}$/.test(num)){ alert("Enter a valid 10‑digit recipient number."); return; }
+  const desc = `${label} data — Plan: ${plan} — Recipient: ${num} — GHS ${price}`;
+  paystackCheckout(price, desc, { type:"data", network:label, plan, recipient:num });
+}
+function payServiceWithPaystack(service, selectId) {
+  const sel = document.getElementById(selectId);
+  const plan = sel.value;
+  const price = sel.selectedOptions[0].dataset.price;
+  const desc = `${service} — Plan: ${plan} — GHS ${price}`;
+  paystackCheckout(price, desc, { type:"service", service, plan });
+}
+function payCheckerWithPaystack(kind, selectId) {
+  const sel = document.getElementById(selectId);
+  const qty = sel.value;
+  const price = sel.selectedOptions[0].dataset.price;
+  const desc = `${kind} result checker — Qty: ${qty} — GHS ${price}`;
+  paystackCheckout(price, desc, { type:"checker", kind, qty });
+}

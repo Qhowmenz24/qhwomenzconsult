@@ -22,7 +22,7 @@
 <section class="hero">
   <div class="container">
     <h1>Your Trusted e‑Voucher & Data Hub</h1>
-    <p>Instant delivery after payment confirmation. Orders go via WhatsApp or SMS.</p>
+    <p>Instant delivery after payment confirmation. Order via WhatsApp, SMS, or Paystack.</p>
   </div>
 </section>
 
@@ -42,6 +42,7 @@
       <div class="btn-row">
         <button class="btn btn--mtn" onclick="openWhatsApp('MTN','mtn')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSData('MTN','mtn')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payDataWithPaystack('MTN','mtn')">Pay with Paystack</button>
       </div>
     </div>
 
@@ -57,6 +58,7 @@
       <div class="btn-row">
         <button class="btn btn--tigo" onclick="openWhatsApp('AirtelTigo','at')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSData('AirtelTigo','at')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payDataWithPaystack('AirtelTigo','at')">Pay with Paystack</button>
       </div>
     </div>
 
@@ -72,6 +74,7 @@
       <div class="btn-row">
         <button class="btn btn--telecel" onclick="openWhatsApp('Telecel','telecel')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSData('Telecel','telecel')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payDataWithPaystack('Telecel','telecel')">Pay with Paystack</button>
       </div>
     </div>
   </section>
@@ -92,6 +95,7 @@
       <div class="btn-row">
         <button class="btn btn--netflix" onclick="openService('Netflix', 'netflix-plan')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSService('Netflix', 'netflix-plan')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payServiceWithPaystack('Netflix', 'netflix-plan')">Pay with Paystack</button>
       </div>
     </div>
 
@@ -108,6 +112,7 @@
       <div class="btn-row">
         <button class="btn btn--audiomack" onclick="openService('Audiomack', 'audio-plan')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSService('Audiomack', 'audio-plan')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payServiceWithPaystack('Audiomack', 'audio-plan')">Pay with Paystack</button>
       </div>
     </div>
 
@@ -137,6 +142,7 @@
       <div class="btn-row">
         <button class="btn btn--wa" onclick="openChecker('BECE','bece-qty')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSChecker('BECE','bece-qty')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payCheckerWithPaystack('BECE','bece-qty')">Pay with Paystack</button>
       </div>
     </div>
 
@@ -155,6 +161,7 @@
       <div class="btn-row">
         <button class="btn btn--wa" onclick="openChecker('WASSCE','wassce-qty')">Buy Now</button>
         <button class="btn btn--sms" onclick="openSMSChecker('WASSCE','wassce-qty')">SMS Order</button>
+        <button class="btn btn--paystack" onclick="payCheckerWithPaystack('WASSCE','wassce-qty')">Pay with Paystack</button>
       </div>
     </div>
   </section>
@@ -168,5 +175,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 </html>
