@@ -22,7 +22,7 @@
 <section class="hero">
   <div class="container">
     <h1>Your Trusted e‑Voucher & Data Hub</h1>
-    <p>Instant delivery after payment confirmation. Orders go via WhatsApp.</p>
+    <p>Instant delivery after payment confirmation. Orders go via WhatsApp or SMS.</p>
   </div>
 </section>
 
@@ -39,8 +39,10 @@
         <input id="mtn-number" type="tel" placeholder="e.g., 0551234567" inputmode="numeric" maxlength="10">
       </label>
       <div class="price-row">GHS <span id="mtn-price">—</span></div>
-      <button class="btn btn--mtn" onclick="openWhatsApp('MTN','mtn')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="btn-row">
+        <button class="btn btn--mtn" onclick="openWhatsApp('MTN','mtn')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSData('MTN','mtn')">SMS Order</button>
+      </div>
     </div>
 
     <div class="card">
@@ -52,8 +54,10 @@
         <input id="at-number" type="tel" placeholder="e.g., 0261234567" inputmode="numeric" maxlength="10">
       </label>
       <div class="price-row">GHS <span id="at-price">—</span></div>
-      <button class="btn btn--tigo" onclick="openWhatsApp('AirtelTigo','at')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="btn-row">
+        <button class="btn btn--tigo" onclick="openWhatsApp('AirtelTigo','at')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSData('AirtelTigo','at')">SMS Order</button>
+      </div>
     </div>
 
     <div class="card">
@@ -65,8 +69,10 @@
         <input id="telecel-number" type="tel" placeholder="e.g., 0201234567" inputmode="numeric" maxlength="10">
       </label>
       <div class="price-row">GHS <span id="telecel-price">—</span></div>
-      <button class="btn btn--telecel" onclick="openWhatsApp('Telecel','telecel')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="btn-row">
+        <button class="btn btn--telecel" onclick="openWhatsApp('Telecel','telecel')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSData('Telecel','telecel')">SMS Order</button>
+      </div>
     </div>
   </section>
 
@@ -83,8 +89,10 @@
         </select>
       </label>
       <div class="price-row">GHS <span id="netflix-price">45</span></div>
-      <button class="btn btn--netflix" onclick="openService('Netflix', 'netflix-plan')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="btn-row">
+        <button class="btn btn--netflix" onclick="openService('Netflix', 'netflix-plan')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSService('Netflix', 'netflix-plan')">SMS Order</button>
+      </div>
     </div>
 
     <div class="card">
@@ -97,14 +105,17 @@
         </select>
       </label>
       <div class="price-row">GHS <span id="audio-price">20</span></div>
-      <button class="btn btn--audiomack" onclick="openService('Audiomack', 'audio-plan')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="btn-row">
+        <button class="btn btn--audiomack" onclick="openService('Audiomack', 'audio-plan')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSService('Audiomack', 'audio-plan')">SMS Order</button>
+      </div>
     </div>
 
     <div class="card">
       <h3>MTN AFA Registration</h3>
       <p>Requirements: Full name and number to be registered.</p>
-      <a class="btn btn--mtn" href="https://wa.me/233592848359?text=Hello%20Qwomenz%20Consult%2C%20I%20want%20to%20register%20for%20MTN%20AFA.%20Details%3A%20Full%20Name%2C%20Number%20to%20be%20registered" target="_blank" rel="noopener">Start on WhatsApp</a>
+      <a class="btn btn--mtn" href="https://wa.me/233592848359?text=Hello%20Qhowmenz%20Consult%2C%20I%20want%20to%20register%20for%20MTN%20AFA.%20Details%3A%20Full%20Name%2C%20Number%20to%20be%20registered" target="_blank" rel="noopener">Start on WhatsApp</a>
+      <button class="btn btn--sms" onclick="openSMSService('MTN AFA Registration', 'netflix-plan')">SMS Us</button>
     </div>
   </section>
 
@@ -113,7 +124,7 @@
 
     <div class="card">
       <h3>BECE Result Checker (WAEC)</h3>
-      <p>Instant PIN + Serial delivered to WhatsApp after payment.</p>
+      <p>Instant PIN + Serial delivered to WhatsApp or SMS after payment.</p>
       <label>Quantity
         <select id="bece-qty">
           <option value="1" data-price="20">1 card — GHS 20</option>
@@ -122,14 +133,16 @@
           <option value="10" data-price="200">10 cards — GHS 200</option>
         </select>
       </label>
-      <div class="price-row">GHS <span id="bece-price">28</span></div>
-      <button class="btn btn--wa" onclick="openChecker('BECE','bece-qty')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="price-row">GHS <span id="bece-price">20</span></div>
+      <div class="btn-row">
+        <button class="btn btn--wa" onclick="openChecker('BECE','bece-qty')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSChecker('BECE','bece-qty')">SMS Order</button>
+      </div>
     </div>
 
     <div class="card">
       <h3>WASSCE Result Checker (WAEC)</h3>
-      <p>Instant PIN + Serial delivered to WhatsApp after payment.</p>
+      <p>Instant PIN + Serial delivered to WhatsApp or SMS after payment.</p>
       <label>Quantity
         <select id="wassce-qty">
           <option value="1" data-price="25">1 card — GHS 25</option>
@@ -138,9 +151,11 @@
           <option value="10" data-price="250">10 cards — GHS 250</option>
         </select>
       </label>
-      <div class="price-row">GHS <span id="wassce-price">35</span></div>
-      <button class="btn btn--wa" onclick="openChecker('WASSCE','wassce-qty')">Buy Now</button>
-      <button class="btn btn--sms" onclick="openSMS()">SMS Order</button>
+      <div class="price-row">GHS <span id="wassce-price">25</span></div>
+      <div class="btn-row">
+        <button class="btn btn--wa" onclick="openChecker('WASSCE','wassce-qty')">Buy Now</button>
+        <button class="btn btn--sms" onclick="openSMSChecker('WASSCE','wassce-qty')">SMS Order</button>
+      </div>
     </div>
   </section>
 </main>

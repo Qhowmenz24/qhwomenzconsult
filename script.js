@@ -1,5 +1,8 @@
 
-// Data pricing tables (from user's original bundles)
+const WA = "233592848359";
+const SMS = "+233592848359";
+
+// Data pricing tables
 const plans = {
   mtn: [
     ["1 GB", 6], ["2 GB", 12], ["3 GB", 17], ["4 GB", 22], ["5 GB", 28],
@@ -28,58 +31,70 @@ function initDropdown(net){
     priceEl.textContent = p;
   });
 }
-
 ["mtn","at","telecel"].forEach(initDropdown);
 
-// Update service prices live
 function bindPrice(selectId, priceSpanId){
   const sel = document.getElementById(selectId);
   const span = document.getElementById(priceSpanId);
   if(!sel || !span) return;
-  sel.addEventListener("change", e => {
-    span.textContent = e.target.selectedOptions[0].dataset.price;
-  });
+  sel.addEventListener("change", e => { span.textContent = e.target.selectedOptions[0].dataset.price; });
 }
 bindPrice("netflix-plan","netflix-price");
 bindPrice("audio-plan","audio-price");
 bindPrice("bece-qty","bece-price");
 bindPrice("wassce-qty","wassce-price");
 
-// WhatsApp helpers
-function encode(s){return encodeURIComponent(s)}
-
 function openWhatsApp(label, net){
   const sel = document.querySelector(`select[data-network="${net}"]`);
   const num = document.getElementById(`${net}-number`).value.trim();
   const plan = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
-  if(!/^\d{10}$/.test(num)){
-    alert("Enter a valid 10‑digit recipient number (e.g., 0551234567)");
-    return;
-  }
+  if(!/^\d{10}$/.test(num)){ alert("Enter a valid 10‑digit recipient number (e.g., 0551234567)"); return; }
   const msg = `Hello Qhowmenz Consult,%0AI want to buy ${label} data.%0APlan: ${plan}%0ARecipient: ${num}%0APrice: GHS ${price}`;
-  window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
+  window.open(`https://wa.me/${WA}?text=${msg}`,"_blank","noopener");
 }
-
 function openService(service, selectId){
   const sel = document.getElementById(selectId);
   const plan = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
   const msg = `Hello Qhowmenz Consult,%0AI want to buy ${service}.%0APlan: ${plan}%0APrice: GHS ${price}`;
-  window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
+  window.open(`https://wa.me/${WA}?text=${msg}`,"_blank","noopener");
 }
-
 function openChecker(kind, selectId){
   const sel = document.getElementById(selectId);
   const qty = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
   const msg = `Hello Qhowmenz Consult,%0AI want ${kind} result checker.%0AQuantity: ${qty}%0APrice: GHS ${price}`;
-  window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
+  window.open(`https://wa.me/${WA}?text=${msg}`,"_blank","noopener");
 }
 
-
-function openSMS(){
-  const phone = "0592848359";
-  const message = encodeURIComponent("Hello Qhowmenz Consult, I would like to place an order.");
-  window.location.href = `sms:$0592848359?body=${message}`;
+// ---- SMS helpers (cross‑device) ----
+function smsLink(body){
+  const encoded = encodeURIComponent(body);
+  const base = `sms:${SMS}`;
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) return base + "&body=" + encoded;
+  return base + "?body=" + encoded;
+}
+function openSMSData(label, net){
+  const sel = document.querySelector(`select[data-network="${net}"]`);
+  const num = document.getElementById(`${net}-number`).value.trim();
+  const plan = sel.value;
+  const price = sel.selectedOptions[0].dataset.price;
+  if(!/^\d{10}$/.test(num)){ alert("Enter a valid 10‑digit recipient number (e.g., 0551234567)"); return; }
+  const body = `Hello Qhowmenz Consult, I want to buy ${label} data.\nPlan: ${plan}\nRecipient: ${num}\nPrice: GHS ${price}`;
+  window.location.href = smsLink(body);
+}
+function openSMSService(service, selectId){
+  const sel = document.getElementById(selectId);
+  const plan = sel.value;
+  const price = sel.selectedOptions[0].dataset.price;
+  const body = `Hello Qhowmenz Consult, I want to buy ${service}.\nPlan: ${plan}\nPrice: GHS ${price}`;
+  window.location.href = smsLink(body);
+}
+function openSMSChecker(kind, selectId){
+  const sel = document.getElementById(selectId);
+  const qty = sel.value;
+  const price = sel.selectedOptions[0].dataset.price;
+  const body = `Hello Qhowmenz Consult, I want ${kind} result checker.\nQuantity: ${qty}\nPrice: GHS ${price}`;
+  window.location.href = smsLink(body);
 }
