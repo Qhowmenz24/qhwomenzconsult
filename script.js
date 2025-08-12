@@ -57,7 +57,7 @@ function openWhatsApp(label, net){
     alert("Enter a valid 10‑digit recipient number (e.g., 0551234567)");
     return;
   }
-  const msg = `Hello Qwomenz Consult,%0AI want to buy ${label} data.%0APlan: ${plan}%0ARecipient: ${num}%0APrice: GHS ${price}`;
+  const msg = `Hello Qhowmenz Consult,%0AI want to buy ${label} data.%0APlan: ${plan}%0ARecipient: ${num}%0APrice: GHS ${price}`;
   window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
 
@@ -65,7 +65,7 @@ function openService(service, selectId){
   const sel = document.getElementById(selectId);
   const plan = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
-  const msg = `Hello Qwomenz Consult,%0AI want to buy ${service}.%0APlan: ${plan}%0APrice: GHS ${price}`;
+  const msg = `Hello Qhowmenz Consult,%0AI want to buy ${service}.%0APlan: ${plan}%0APrice: GHS ${price}`;
   window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
 
@@ -73,6 +73,6 @@ function openChecker(kind, selectId){
   const sel = document.getElementById(selectId);
   const qty = sel.value;
   const price = sel.selectedOptions[0].dataset.price;
-  const msg = `Hello Qwomenz Consult,%0AI want ${kind} result checker.%0AQuantity: ${qty}%0APrice: GHS ${price}`;
+  const msg = `Hello Qhowmenz Consult,%0AI want ${kind} result checker.%0AQuantity: ${qty}%0APrice: GHS ${price}`;
   window.open(`https://wa.me/233592848359?text=${msg}`,"_blank","noopener");
 }
